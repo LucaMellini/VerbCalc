@@ -2,17 +2,20 @@
 Translator module allows to change natural language to mathematical notation.
 """
 from verbcalc.core.translator.symbols import Symbols
+from verbcalc.core.translator.numbers import Numbers
 
 DEFAULT_SYMBOLS = Symbols()
+NUMBERS = Numbers()
 
 
-def translate(sentence: str, symbols: Symbols = DEFAULT_SYMBOLS) -> str:
+def translate(sentence: str, symbols: Symbols = DEFAULT_SYMBOLS, numbers: Numbers = NUMBERS) -> str:
     """
       Translates maths related words into their symbols.
 
       Args:
           sentence: Sentence to be converted.
           symbols: Instance of symbols to match the words from.
+          numbers : Instance of literal numbers to match the numbers from.
 
       Returns:
           Converted sentence.
@@ -22,5 +25,7 @@ def translate(sentence: str, symbols: Symbols = DEFAULT_SYMBOLS) -> str:
     for key in symbols.symbol_dictionary.keys():
         for phrase in symbols.symbol_dictionary[key]:
             result = result.replace(phrase, key)
+
+    result = numbers.text_to_int(result)
 
     return result

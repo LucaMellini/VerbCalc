@@ -40,6 +40,16 @@ class TestTranslator(unittest.TestCase):
         ]
         self.assertListEqual(self.expected, values)
 
+    def test_txt_to_int(self):
+        self.assertEqual(verbcalc.translate("five"), 5)
+        self.assertEqual(verbcalc.translate("twelve"), 12)
+        self.assertEqual(verbcalc.translate("sixty one"), 61)
+        self.assertEqual(verbcalc.translate("sixty-one"), 61)
+        self.assertEqual(verbcalc.translate("one thousand eighty nine"), 1089)
+        self.assertEqual(verbcalc.translate("five million and two"), 5000002)
+        self.assertEqual(verbcalc.translate("eighty three thousand"), 83000)
+        self.assertEqual(verbcalc.translate("five million sixty five thousand three hundred and eighty-one"), 5065381)
+
 
 if __name__ == '__main__':
     unittest.main()
