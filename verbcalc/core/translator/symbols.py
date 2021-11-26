@@ -24,13 +24,21 @@ class Symbols:
         self._divisions = ['divided by']
         self._exponentiations = ['to the power of']
         self._absolutes = ['absolute of', 'absolute value of']
+        self._modulo = ['mod', 'modulo']
+        self._roots = ['root of']
+        self._questions = ['what is the result of', 'what is', 'calculate',
+                           'result of', 'how do you', 'find',' how much',
+                           'how much is', 'which number is result of', 'what']
         self.symbol_dictionary = {
             '+': self._additions,
             '-': self._subtractions,
             '*': self._multiplications,
             '/': self._divisions,
             '**': self._exponentiations,
-            'abs': self._absolutes
+            'abs': self._absolutes,
+            '%': self._modulo,
+            'root': self._roots,
+            '': self._questions
         }
 
     @property
@@ -56,6 +64,18 @@ class Symbols:
     @property
     def absolutes(self) -> list:
         return self._absolutes
+
+    @property
+    def modulo(self) -> list:
+        return self._modulo
+
+    @property
+    def roots(self) -> list:
+        return self._roots
+
+    @property
+    def questions(self) -> list:
+        return self._questions
 
     @additions.setter
     def additions(self, value) -> None:
@@ -86,3 +106,18 @@ class Symbols:
     def absolutes(self, value) -> None:
         self._absolutes = value
         self.symbol_dictionary.update({'abs': self._absolutes})
+
+    @modulo.setter
+    def modulo(self, value) -> None:
+        self._modulo = value
+        self.symbol_dictionary.update({'%': self._modulo})
+
+    @roots.setter
+    def roots(self, value) -> None:
+        self._roots = value
+        self.symbol_dictionary.update({'root': self._roots})
+
+    @questions.setter
+    def questions(self, value) -> None:
+        self._questions = value
+        self.symbol_dictionary.update({'': self._questions})

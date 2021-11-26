@@ -30,3 +30,10 @@ verbcalc.core.calculate module
    :undoc-members:
    :show-inheritance:
 
+verbcalc.core.answers module
+-------------------------------
+
+.. automodule:: verbcalc.core.answers
+   :members:
+   :undoc-members:
+   :show-inheritance:
