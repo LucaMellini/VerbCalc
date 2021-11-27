@@ -16,3 +16,4 @@ Eryk
 
 - Nandini Maheshwari <nandinimaheshwari7107@gmail.com>
 - Syed Atif <syedatif4118> <syedatif4118@gmail.com
+- Luca Mellini <l.mellini@hotmail.com>
