@@ -29,6 +29,16 @@ class TestTranslator(unittest.TestCase):
                   verbcalc.translate('2 mod 2')]
         self.assertListEqual(self.expected, values)
 
+    def test_translation2(self):
+        values = [verbcalc.translate('two plus two'),
+                  verbcalc.translate('two minus two'),
+                  verbcalc.translate('two times two'),
+                  verbcalc.translate('two divided by two'),
+                  verbcalc.translate('two to the power of two'),
+                  verbcalc.translate('absolute of two'),
+                  verbcalc.translate('two mod two')]
+        self.assertListEqual(self.expected, values)
+
     def test_translation_with_custom_symbols(self):
         values = [
             verbcalc.translate('2 foo 2', symbols=self._custom_symbols),
@@ -43,14 +53,13 @@ class TestTranslator(unittest.TestCase):
         self.assertListEqual(self.expected, values)
 
     def test_txt_to_int(self):
-        self.assertEqual(verbcalc.translate("five"), 5)
-        self.assertEqual(verbcalc.translate("twelve"), 12)
-        self.assertEqual(verbcalc.translate("sixty one"), 61)
-        self.assertEqual(verbcalc.translate("sixty-one"), 61)
-        self.assertEqual(verbcalc.translate("one thousand eighty nine"), 1089)
-        self.assertEqual(verbcalc.translate("five million and two"), 5000002)
-        self.assertEqual(verbcalc.translate("eighty three thousand"), 83000)
-        self.assertEqual(verbcalc.translate("five million sixty five thousand three hundred and eighty-one"), 5065381)
+        self.assertEqual(verbcalc.translate("five"), "5")
+        self.assertEqual(verbcalc.translate("twelve"), "12")
+        self.assertEqual(verbcalc.translate("sixty one"), "61")
+        self.assertEqual(verbcalc.translate("one thousand eighty nine"), "1089")
+        self.assertEqual(verbcalc.translate("five million and two"), "5000002")
+        self.assertEqual(verbcalc.translate("eighty three thousand"), "83000")
+        self.assertEqual(verbcalc.translate("five million sixty five thousand three hundred and eighty one"), "5065381")
 
 
 if __name__ == '__main__':

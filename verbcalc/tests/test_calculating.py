@@ -30,8 +30,10 @@ class TestCalculate(unittest.TestCase):
                          'You cannot divide by zero!')
         self.assertEqual(verbcalc.calculate
                          ('2 plus 2 minus 1', silent=True), '3')
-        self.assertEqual(verbcalc.calculate('2 2'),
+        self.assertEqual(verbcalc.calculate('+ %'),
                          'Your expression is invalid')
+        #self.assertEqual(verbcalc.calculate('2 2'),
+        #                 'Your expression is invalid')
 
 
 if __name__ == '__main__':

@@ -4,13 +4,16 @@
 
 class Numbers:
     """
+    This class will help translating any written number into its actual integer.
 
+    Attributes:
+         word_int_map: map the values in "units", "tens" and "scales" with their integer translation
     """
 
     def __init__(self):
-        self.units = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", ]
-        self.tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
-        self.scales = ["hundred", "thousand", "million", "billion", "trillion"]
+        self._units = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", ]
+        self._tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+        self._scales = ["hundred", "thousand", "million", "billion", "trillion"]
         self.word_int_map = self.create_dict()
 
 
@@ -24,13 +27,13 @@ class Numbers:
         """
         res = {}
 
-        for index, word in enumerate(self.units):
+        for index, word in enumerate(self._units):
             res[word] = (1, index)
 
-        for index, word in enumerate(self.tens):
+        for index, word in enumerate(self._tens):
             res[word] = (1, index * 10)
 
-        for index, word in enumerate(self.scales):
+        for index, word in enumerate(self._scales):
             res[word] = (10 ** (index * 3 or 2), 0)
 
         res["and"] = (1, 0)
@@ -49,11 +52,9 @@ class Numbers:
         """
         current = result = 0
 
-        txt = txt.replace('-', ' ')
-
         for word in txt.split():
             if word not in self.word_int_map:
-                raise Exception("Word not handled: " + word)
+                continue
 
             scale, num = self.word_int_map[word]
             current = current * scale + num
@@ -62,3 +63,18 @@ class Numbers:
                 current = 0
 
         return result + current
+
+
+    def is_string_an_integer(self, txt):
+        """
+
+        Args:
+            txt: a string to be tested
+
+        Returns: a boolean testing if txt is an integer or not
+
+        """
+        is_positive_integer = txt.isdigit()
+        is_negative_integer = txt.startswith('-') and txt[1:].isdigit()
+
+        return is_positive_integer or is_negative_integer
