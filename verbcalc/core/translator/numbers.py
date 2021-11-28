@@ -1,5 +1,5 @@
 """
-    Handles literal numbers
+Handles literal numbers.
 """
 
 class Numbers:
