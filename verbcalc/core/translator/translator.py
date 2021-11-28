@@ -29,7 +29,7 @@ def translate(sentence: str, symbols: Symbols = DEFAULT_SYMBOLS, numbers: Number
 
     # split the sentence based on whitespace
     # i.e. ['abs', 'four', 'hundred', '-', 'eight', '+', 'five']
-    splitted = result.split(" ")
+    splitted = result.split()
 
     # create a dictionnary and initialize it
     # i.e. {0: [], 1: [], 2: [], 3: [], 4: [], 5: [], 6: []}
