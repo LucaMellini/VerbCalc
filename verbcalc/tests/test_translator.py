@@ -29,7 +29,7 @@ class TestTranslator(unittest.TestCase):
                   verbcalc.translate('2 mod 2')]
         self.assertListEqual(self.expected, values)
 
-    def test_translation2(self):
+    def test_translation_with_literal_numbers(self):
         values = [verbcalc.translate('two plus two'),
                   verbcalc.translate('two minus two'),
                   verbcalc.translate('two times two'),
